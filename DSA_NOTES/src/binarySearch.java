@@ -1,11 +1,11 @@
 public class binarySearch {
 
-//    linear search  --- searching for each element linearly
-//    best case - O(1)  -->when element is in first index itself
-//    worst case- O(n)  --> when element is in the last index or not present in the array
+//    binary search  --- searching for each element by dividing a sorted array in two, and then comparing the middle element
+//    best case ---> O(1)
+//    worst case- O(log(n))
 
     public static void main(String[] args) {
-        int[] arr = {2, 34, 54, 22, 90 ,65, 8, 3, 19 , 52, 7};
+        int[] arr = {2, 31, 54, 72, 90 ,95, 98, 103, 119 , 152, 117};
         int[][] arr2D = {
                 {1,67, 2},
                 {45,3,7,89,2,34},
@@ -15,32 +15,25 @@ public class binarySearch {
 
         int searchnum = 90;
         int index =  search(arr, searchnum);
-        System.out.println(searchnum +" is found in index = " + index);
+        System.out.println(index==-1 ? "Not found " :  searchnum +" is found in index = " + index);
 
-        int searchNum2 = 89;
-        String ans = search2DArray(arr2D, 89);
-        System.out.println(searchNum2  +" that is found in index = " + ans ==null? "-1" : ans);
 
     }
 
     static int search(int[] arr, int num){
-        for(int i=0; i< arr.length;i++){
-            if(arr[i] == num){
-                return i;
-            }
-        }
-        return -1;
-    }
+      int start = 0;
+      int end = arr.length-1;
+      while(start<=end){
 
-    static String search2DArray(int[][] arr2D, int num) {
-        for (int i = 0; i < arr2D.length; i++) {
-            for (int j = 0; j < arr2D[i].length; j++) {
-                if (arr2D[i][j] == num) {
-                    return "arr2D[" + i + "][" + j + "]";
-                }
-            }
-        }
-        return null;
+          int mid = start + (end-start)/2;
+          if(arr[mid]==num)
+              return mid;
+          else if (arr[mid] > num)
+              end=mid-1;
+          else
+              start=mid+1;
+      }
+      return -1;
     }
 
 }
