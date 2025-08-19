@@ -29,7 +29,7 @@ public class Lists {
         //but when we remove elements, it doesn't auto shrink its capacity->
 
         // to shrink the size manually- trimToSize() but this is the method of class and parent cannot access the child methods
-        list1.trimToSize();
+//        list1.trimToSize();
 
         ArrayList<Integer> list2 = new ArrayList<>(5);
 
@@ -54,25 +54,8 @@ public class Lists {
 
         arrayAsList.set(2,56);  //set index 2 as 56
 
-        class Person {
-            String name;
-            int age;
+        arrayAsList.sort(null);
 
-            // constructor, getters, and toString()
-        }
-        List<Person> people = Arrays.asList(
-                new Person("Alice", 30),
-                new Person("Bob", 25),
-                new Person("Charlie", 35),
-                new Person("David", 22),
-                new Person("Eve", 30)
-        );
-
-
-
-        people.stream().collect(Collectors.groupingBy(Person::getAge, Collectors.mapping(Person::)))
-
-        Map<String, Double> avgSalary = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)))
     }
 
 
